@@ -49,7 +49,7 @@ var product_1 = require("./entity/product");
 var AppDataSource = new typeorm_1.DataSource(ormconfig_1.default);
 AppDataSource.initialize().then(function (db) {
     var productRepository = db.getMongoRepository(product_1.Product);
-    callback_api_1.default.connect("amqps://dyhvjprw:tHcp6ZzCdS4PzgqRxtaBGW0NBR45YCBN@shrimp.rmq.cloudamqp.com/dyhvjprw", function (error0, connection) {
+    callback_api_1.default.connect(process.env.RABBIT_MQ_URL, function (error0, connection) {
         if (error0) {
             throw error0;
         }
